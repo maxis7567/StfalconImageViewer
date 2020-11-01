@@ -88,19 +88,21 @@ internal class SwipeToDismissHandler(
     }
 
     private fun animateTranslation(translationTo: Float) {
-        swipeView.animate()
-            .translationY(translationTo)
-            .setDuration(ANIMATION_DURATION)
-            .setInterpolator(AccelerateInterpolator())
-            .setUpdateListener { onSwipeViewMove(swipeView.translationY, translationLimit) }
-            .setAnimatorListener(onAnimationEnd = {
-                if (translationTo != 0f) {
-                    onDismiss()
-                }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            swipeView.animate()
+                .translationY(translationTo)
+                .setDuration(ANIMATION_DURATION)
+                .setInterpolator(AccelerateInterpolator())
+                .setUpdateListener { onSwipeViewMove(swipeView.translationY, translationLimit) }
+                .setAnimatorListener(onAnimationEnd = {
+                    if (translationTo != 0f) {
+                        onDismiss()
+                    }
 
-                //remove the update listener, otherwise it will be saved on the next animation execution:
-                swipeView.animate().setUpdateListener(null)
-            })
-            .start()
+                    //remove the update listener, otherwise it will be saved on the next animation execution:
+                    swipeView.animate().setUpdateListener(null)
+                })
+                .start()
+        }
     }
 }

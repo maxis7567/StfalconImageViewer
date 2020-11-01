@@ -67,9 +67,13 @@ internal fun View.applyMargin(
 ) {
     if (layoutParams is ViewGroup.MarginLayoutParams) {
         layoutParams = (layoutParams as ViewGroup.MarginLayoutParams).apply {
-            marginStart = start ?: marginStart
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                marginStart = start ?: marginStart
+            }
             topMargin = top ?: topMargin
-            marginEnd = end ?: marginEnd
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                marginEnd = end ?: marginEnd
+            }
             bottomMargin = bottom ?: bottomMargin
         }
     }

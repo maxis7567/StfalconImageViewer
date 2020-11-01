@@ -14,7 +14,7 @@ Need iOS and Android apps, MVP development or prototyping? Contact us via info@s
 
 ### Requirements
 * A project configured with the AndroidX
-* SDK 19 and and higher
+* SDK 16 and and higher
 
 ### Demo Application
 [![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.stfalcon.stfalconimageviewersample)

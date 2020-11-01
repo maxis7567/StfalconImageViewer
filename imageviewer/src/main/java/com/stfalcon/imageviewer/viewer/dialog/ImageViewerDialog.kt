@@ -58,7 +58,7 @@ internal class ImageViewerDialog<T>(
     }
 
     fun close() {
-        viewerView.close()
+        dialog.dismiss()
     }
 
     fun dismiss() {
